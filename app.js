@@ -1,19 +1,24 @@
-var tfl = require('./transport-for-london'),
-    rail = require('./national-rail');
+var tfl = require('./tfl')
+  // , rail = require('./national-rail')
+;
 
 tfl.tube.status({
     'lines': ['Jubilee', 'District']
+}).then(function(lines) {
+    console.log(lines);
 });
-tfl.tube.incidents({
-    'lines': ['Jubilee', 'District'],
-});
-tfl.tube.line('Jubilee');
 
-tfl.overground.???.('Algate East');
+// tfl.tube.incidents({
+//     'lines': ['Jubilee', 'District'],
+// });
 
-tfl.road.disruptions();
-tfl.road.cameras();
+// tfl.tube.line('Jubilee');
 
-tfl.cyclehire.availability();
+// tfl.overground.???.('Algate East');
 
-tfl.bus.???;
+// tfl.road.disruptions();
+// tfl.road.cameras();
+
+// tfl.cyclehire.availability();
+
+// tfl.bus.???;
