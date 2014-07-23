@@ -4,28 +4,37 @@ var request = require('request')
 ;
 
 var TFL = function() {
-    this.baseUrl = 'http://cloud.tfl.gov.uk/';
+    this.baseUrl = 'http://cloud.tfl.gov.uk';
 };
 
 TFL.prototype.get = function(uri, root) {
-    var deferred = q.defer(),
-        xml;
+    var deferred = q.defer()
+      , xml
+      , nodes
+    ;
 
     this.promise = deferred.promise;
+
+    console.log({
+        'url': this.baseUrl + uri
+    });
 
     request({
         url: this.baseUrl + uri
     }, function(error, response, body) {
         xml = libxml.parseXml(body);
 
-        console.log(xml);
-        console.log(xml.root().childNodes());
-
         if (root) {
-
+            nodes = xml.get('//' + root).childNodes();
+        } else {
+            nodes = xml.root().childNodes();
         }
 
-        deferred.resolve(xml);
+        // console.log(xml.root().name());
+
+        // console.log(body);
+
+        deferred.resolve(nodes);
     }.bind(this));
 
     return this.promise;
