@@ -15,7 +15,7 @@ TFL.prototype.get = function(uri, root) {
 
     this.promise = deferred.promise;
 
-    console.log({
+    console.log('GET:', {
         'url': this.baseUrl + uri
     });
 
@@ -29,10 +29,6 @@ TFL.prototype.get = function(uri, root) {
         } else {
             nodes = xml.root().childNodes();
         }
-
-        // console.log(xml.root().name());
-
-        // console.log(body);
 
         deferred.resolve(nodes);
     }.bind(this));

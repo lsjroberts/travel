@@ -5,12 +5,14 @@ var tfl = require('./tfl')
 tfl.tube.status({
     'lines': ['Jubilee', 'District']
 }).then(function(lines) {
-    console.log(lines);
+    console.log('Status:', lines);
 });
 
-// tfl.tube.incidents({
-//     'lines': ['Jubilee', 'District'],
-// });
+tfl.tube.incidents({
+    'lines': ['Jubilee', 'District'],
+}).then(function(lines) {
+    console.log('Incidents:', lines);
+});
 
 // tfl.tube.line('Jubilee');
 

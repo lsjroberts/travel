@@ -1,22 +1,31 @@
 var tfl = require('./tfl')
-    _ = require('underscore');
+  , _ = require('underscore')
+;
 
 var Tube = function() { };
 
 Tube.prototype.status = function(options) {
-    var statuses
+    var endpoint
+      , statuses
       , promise
     ;
 
     options = _.defaults(options, {
         lines: [],
+        incidents: false,
     });
 
     if (options.lines.length == 0) {
         return;
     }
 
-    promise = tfl.get('/TrackerNet/LineStatus');
+    endpoint = '/TrackerNet/LineStatus';
+
+    if (options.incidents) {
+        endpoint += '/IncidentsOnly';
+    }
+
+    promise = tfl.get(endpoint);
 
     return promise.then(function(nodes) {
         var lines = []
@@ -27,7 +36,6 @@ Tube.prototype.status = function(options) {
         for (n in nodes) {
             node = nodes[n];
             if (node.name() == 'LineStatus') {
-                // console.log(node.child(3).name());
                 lines.push({
                     'line': node.child(3).attr('Name').value(),
                     'status': node.child(5).attr('Description').value(),
@@ -40,7 +48,13 @@ Tube.prototype.status = function(options) {
     });
 };
 
-Tube.prototype.incidents = function(options) { };
+Tube.prototype.incidents = function(options) {
+    options = options || {};
+    options.incidents = true;
+
+    return this.status(options);
+};
+
 Tube.prototype.line = function(name) { };
 Tube.prototype.station = function(name) { };
 
