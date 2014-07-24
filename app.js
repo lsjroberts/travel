@@ -2,16 +2,23 @@ var tfl = require('./tfl')
   // , rail = require('./national-rail')
 ;
 
-tfl.tube.status({
+tfl.tube.lines({
     'lines': ['Jubilee', 'District']
 }).then(function(lines) {
-    console.log('Status:', lines);
+    console.log('Lines:', lines);
 });
 
-tfl.tube.incidents({
+tfl.tube.lines({
     'lines': ['Jubilee', 'District'],
+    'incidents': true
 }).then(function(lines) {
     console.log('Incidents:', lines);
+});
+
+tfl.tube.stations({
+    'stations': ['Victoria'],
+}).then(function(stations) {
+    console.log('Stations:', stations);
 });
 
 // tfl.tube.line('Jubilee');

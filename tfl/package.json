@@ -12,6 +12,7 @@
   "license": "MIT",
   "dependencies": {
     "libxmljs": "^0.11.0",
+    "nomnom": "^1.8.0",
     "q": "^1.0.1",
     "request": "^2.38.0",
     "underscore": "^1.6.0"

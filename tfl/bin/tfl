@@ -1,0 +1,33 @@
+#!/usr/bin/env node
+
+var parser = require('nomnom');
+
+parser.command('line')
+    .option('line', {
+        position: 1,
+        help: 'Name of the line to search for'
+    })
+    .option('north', {
+        abbr: 'n',
+        help: 'Get northbound status',
+        flag: true
+    })
+    .option('south', {
+        abbr: 's',
+        help: 'Get southbound status',
+        flag: true
+    })
+    .option('east', {
+        abbr: 'e',
+        help: 'Get eastbound status',
+        flag: true
+    })
+    .option('west', {
+        abbr: 'w',
+        help: 'Get westbound status',
+        flag: true
+    });
+
+var opts = parser.parse();
+
+console.log(opts);

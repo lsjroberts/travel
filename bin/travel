@@ -1,0 +1,71 @@
+#!/usr/bin/env node
+
+var parser = require('nomnom')
+  , colors = require('colors')
+;
+
+colors.setTheme({
+    title: 'green',
+    label: 'bold',
+    info: 'white',
+    warn: 'yellow',
+    error: 'red',
+});
+
+// console.log('=== Travel ===\n'.title);
+
+// temp
+providers = {
+    'tfl': {
+        'name': 'Transport for London',
+        'location': 'London, UK',
+    },
+    'national-rail': {
+        'name': 'National Rail',
+        'location': 'UK',
+    }
+};
+
+parser.command('providers')
+    .option('list', {
+        abbr: 'l',
+        flag: true,
+        default: true
+    })
+
+parser.command('use')
+    .option('provider', {
+        position: 0,
+        required: true
+    })
+    .option('alias', {
+        abbr: 'a',
+    })
+
+Object.keys(providers).forEach(function(p) {
+    parser.command(p)
+        .option('args', {
+            position: 1,
+            list: true
+        });
+});
+
+var opts = parser.parse();
+
+// console.log(opts);
+
+if (Object.keys(providers).indexOf(opts[0]) > -1) {
+    console.log('run command', '$ travel ' + opts[0], 'with', opts.args);
+}
+
+switch (opts[0]) {
+    case 'providers':
+        console.log('Providers'.title);
+        Object.keys(providers).forEach(function(p) {
+            console.log('\n');
+            console.log(p.label);
+            console.log(' - ' + providers[p].name.info);
+            console.log(' - ' + providers[p].location.info);
+        });
+        break;
+}

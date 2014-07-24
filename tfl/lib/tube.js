@@ -4,7 +4,7 @@ var tfl = require('./tfl')
 
 var Tube = function() { };
 
-Tube.prototype.status = function(options) {
+Tube.prototype.lines = function(options) {
     var endpoint
       , statuses
       , promise
@@ -12,14 +12,21 @@ Tube.prototype.status = function(options) {
 
     options = _.defaults(options, {
         lines: [],
+        stations: [],
         incidents: false,
     });
 
-    if (options.lines.length == 0) {
+    if (options.lines.length == 0 && options.stations.length == 0) {
         return;
     }
 
-    endpoint = '/TrackerNet/LineStatus';
+    endpoint = '/TrackerNet';
+
+    if (option.lines.length > 0) {
+        endpoint += '/LineStatus';
+    } else {
+        endpoint += '/StationStatus';
+    }
 
     if (options.incidents) {
         endpoint += '/IncidentsOnly';
@@ -55,7 +62,10 @@ Tube.prototype.incidents = function(options) {
     return this.status(options);
 };
 
-Tube.prototype.line = function(name) { };
+Tube.prototype.line = function(name) {
+
+};
+
 Tube.prototype.station = function(name) { };
 
 module.exports = new Tube();
