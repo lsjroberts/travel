@@ -4,7 +4,7 @@ var tfl = require('./tfl')
 
 var Tube = function() { };
 
-Tube.prototype.lines = function(options) {
+Tube.prototype.status = function(options) {
     var endpoint
       , statuses
       , promise
@@ -16,16 +16,12 @@ Tube.prototype.lines = function(options) {
         incidents: false,
     });
 
-    if (options.lines.length == 0 && options.stations.length == 0) {
-        return;
-    }
-
     endpoint = '/TrackerNet';
 
-    if (option.lines.length > 0) {
-        endpoint += '/LineStatus';
-    } else {
+    if (options.stations.length > 0) {
         endpoint += '/StationStatus';
+    } else {
+        endpoint += '/LineStatus';
     }
 
     if (options.incidents) {
@@ -47,8 +43,15 @@ Tube.prototype.lines = function(options) {
                     'line': node.child(3).attr('Name').value(),
                     'status': node.child(5).attr('Description').value(),
                     'statusDescription': node.attr('StatusDetails').value(),
+                    'incident': node.child(5).attr('Description').value() !== 'Good Service',
                 });
             }
+        }
+
+        if (options.lines.length > 0) {
+            lines = lines.filter(function(line) {
+                return options.lines.indexOf(line.line) > -1;
+            });
         }
 
         return lines;

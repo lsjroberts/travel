@@ -15,9 +15,9 @@ TFL.prototype.get = function(uri, root) {
 
     this.promise = deferred.promise;
 
-    console.log('GET:', {
-        'url': this.baseUrl + uri
-    });
+    // console.log('GET:', {
+    //     'url': this.baseUrl + uri
+    // });
 
     request({
         url: this.baseUrl + uri
