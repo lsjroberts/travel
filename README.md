@@ -2,6 +2,10 @@
 
 ### Hipchat
 
+```
+node hipchat.js [port]
+```
+
 **Summary**
 ```
 /hipchat/summary

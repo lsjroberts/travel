@@ -1,20 +1,16 @@
 {
-  "name": "transport-for-london",
+  "name": "travel",
   "version": "0.0.0",
   "description": "",
   "main": "index.js",
   "keywords": [
-    "tfl",
-    "london",
-    "transport"
+    "travel",
   ],
   "author": "Laurence Roberts <lsjroberts@outlook.com>",
   "license": "MIT",
   "dependencies": {
-    "libxmljs": "^0.11.0",
     "nomnom": "^1.8.0",
-    "q": "^1.0.1",
-    "request": "^2.38.0",
-    "underscore": "^1.6.0"
+    "tfl": "^0.0.0",
+    "national-rail": "^0.0.0"
   }
 }
