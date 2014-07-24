@@ -1,5 +1,30 @@
 # Travel
 
+### Hipchat
+
+**Summary**
+```
+/hipchat/summary
+```
+
+**Tube Lines Status**
+```
+/hipchat/tube/line/status
+```
+
+**Tube Line Incidents**
+```
+/hipchat/tube/line/incidents
+```
+
+**Tube Station Incidents**
+```
+/hipchat/tube/station/incidents
+```
+
+_etc._
+
+<!--
 _n.b. this is a work in progress_
 
 Get travel updates and statuses from your terminal.
@@ -70,3 +95,4 @@ $ travel tfl roads
 ```
 $ travel nr
 ```
+-->
