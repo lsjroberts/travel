@@ -4,13 +4,14 @@
   "description": "",
   "main": "index.js",
   "keywords": [
-    "travel",
+    "travel"
   ],
   "author": "Laurence Roberts <lsjroberts@outlook.com>",
   "license": "MIT",
   "dependencies": {
+    "national-rail": "0.0.0",
     "nomnom": "^1.8.0",
-    "tfl": "^0.0.0",
-    "national-rail": "^0.0.0"
+    "request": "^2.39.0",
+    "tfl": "0.0.0"
   }
 }

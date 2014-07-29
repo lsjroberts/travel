@@ -8,22 +8,22 @@ node hipchat.js [port]
 
 **Summary**
 ```
-/hipchat/summary
+/summary
 ```
 
 **Tube Lines Status**
 ```
-/hipchat/tube/line/status
+/tube/line/status
 ```
 
 **Tube Line Incidents**
 ```
-/hipchat/tube/line/incidents
+/tube/line/incidents
 ```
 
 **Tube Station Incidents**
 ```
-/hipchat/tube/station/incidents
+/tube/station/incidents
 ```
 
 _etc._
